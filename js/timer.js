@@ -25,8 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Check if the time is up
     if (remainingTime <= 0) {
       clearInterval(timerInterval);
-      alert("Time's up!");
-      // Add any additional actions when the exam ends
+      location.replace("result/result.html");
     }
   }
 
