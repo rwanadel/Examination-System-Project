@@ -5,13 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exam</title>
     <link rel="stylesheet" href="css/timer.css" />
+    <link rel="stylesheet" href="css/question-and-answer.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
   </head>
   <body>
     <!-- timer -->
-    <div class="timer-container">
+    <div class="timer-container m-2 ">
       <div id="timer-bar"></div>
     </div>
 
+    <!-- continer of question and answer -->
+
+    <div class="question-container row m-2 h-75 ">
+      <div class="question col-8   ">
+           <div class="questionTitle fs-2">
+
+           </div>
+           <div class="answers fs-4 text-light  ">
+            
+
+           </div>
+           <button id="prev-btn" class="btn btn-light">previous</button>
+           <button id="next-btn" class="btn btn-light">Next</button>
+           <button id="Mark-btn" class="btn btn-warning">Mark</button>
+      </div>
+      <div class="marked-question col-4 ">
+            jjjjjjjjjjj
+      </div>
+
+    </div>
+
     <scrip src="js/timer.js"></scrip>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>

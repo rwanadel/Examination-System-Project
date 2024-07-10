@@ -6,6 +6,9 @@ class Question{
         this.number=number;
 
     }
+    toString(){
+        return this.title;
+    }
 
 }
 export default Question;

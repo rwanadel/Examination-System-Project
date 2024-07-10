@@ -1,0 +1,32 @@
+
+
+
+.question{
+   background-color:#cffbf4 ;
+   height: 500px;
+   
+}
+.marked-question{
+    background-color: #4cb8a6;
+
+}
+
+.answers{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30%;
+    
+}
+.continerOfRadioAndLabel{
+   
+    max-width: 70%;
+    min-width: 30%;
+    border: 1px solid #4cb8a6 ;
+    border-radius: 3px;
+    background-color: #4cb8a6;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+

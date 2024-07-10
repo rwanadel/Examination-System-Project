@@ -1,13 +1,14 @@
 /* styles.css */
+
 body {
   font-family: Arial, sans-serif;
 }
 
 .timer-container {
-  width: 100%;
+  
   background-color: #f3f3f3;
   border: 1px solid #ccc;
-  margin: 20px 0;
+  
   position: relative;
 }
 
