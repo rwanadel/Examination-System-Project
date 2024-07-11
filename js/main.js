@@ -3,114 +3,233 @@ import Answer from "./answersClass.js";
 import displayQuestion from "./displayQuestionFunction.js";
 import shuffle from "./randoQuestion.js";
 
-let q1=new Question("1-What is the correct syntax to print a message in the console in JavaScript?",
-   [ new Answer("console.print('Hello World!'); ",false),
-    new Answer("console.log('Hello World!'); ",true),
-    new Answer("print.console('Hello World!'); ",false),
-    new Answer("log.console('Hello World!'); ",false)
-   ],1
+let q1 = new Question(
+  "1-What is the correct syntax to print a message in the console in JavaScript?",
+  [
+    new Answer("console.print('Hello World!'); "),
+    new Answer("console.log('Hello World!');"),
+    new Answer("print.console('Hello World!'); "),
+    new Answer("log.console('Hello World!'); "),
+  ],
+  1,
+  "console.log('Hello World!');"
 );
 
-let q2=new Question("2-Which company developed JavaScript?",
-   [ new Answer("Microsoft ",false),
-    new Answer("Google ",false),
-    new Answer("Sun Microsystems ",false),
-    new Answer("Netscape ",true)
-   ],2
+let q2 = new Question(
+  "2-Which company developed JavaScript?",
+  [
+    new Answer("Microsoft "),
+    new Answer("Google "),
+    new Answer("Sun Microsystems "),
+    new Answer("Netscape"),
+  ],
+  2,
+  "Netscape"
 );
 
-let q3=new Question("3-Which of the following is the correct way to create a new array in JavaScript?",
-   [ new Answer("var colors = 'red', 'green', 'blue'; ",false),
-    new Answer("var colors = ['red', 'green', 'blue']; ",true),
-    new Answer("var colors = (1:'red', 2:'green', 3:'blue'); ",false),
-    new Answer("var colors = {'red', 'green', 'blue'}; ",false)
-   ],3
+let q3 = new Question(
+  "3-Which of the following is the correct way to create a new array in JavaScript?",
+  [
+    new Answer("var colors = 'red', 'green', 'blue'; "),
+    new Answer("var colors = ['red', 'green', 'blue'];"),
+    new Answer("var colors = (1:'red', 2:'green', 3:'blue'); "),
+    new Answer("var colors = {'red', 'green', 'blue'}; "),
+  ],
+  3,
+  "var colors = ['red', 'green', 'blue'];"
 );
 
-let q4=new Question("4-How can you add a comment in JavaScript?",
-   [ new Answer("<!-- This is a comment --> ",false),
-    new Answer("/* This is a comment */ ",false),
-    new Answer("// This is a comment ",true),
-    new Answer("** This is a comment ** ",false)
-   ],4
+let q4 = new Question(
+  "4-How can you add a comment in JavaScript?",
+  [
+    new Answer("<!-- This is a comment --> "),
+    new Answer("/* This is a comment */ "),
+    new Answer("// This is a comment"),
+    new Answer("** This is a comment ** "),
+  ],
+  4,
+  "// This is a comment"
 );
 
-let q5=new Question(" 5-What is the output of typeof NaN in JavaScript?",
-   [ new Answer("number ",true),
-    new Answer("NaN ",false),
-    new Answer("undefined ",false),
-    new Answer("string ",false)
-   ],5
+let q5 = new Question(
+  " 5-What is the output of typeof NaN in JavaScript?",
+  [
+    new Answer("number"),
+    new Answer("NaN "),
+    new Answer("undefined "),
+    new Answer("string "),
+  ],
+  5,
+  "number"
 );
 
-let q6=new Question("6-Which method is used to round a number to the nearest integer in JavaScript? ",
-   [ new Answer("Math.ceil() ",false),
-    new Answer("Math.round() ",true),
-    new Answer("Math.floor() ",false),
-    new Answer("Math.abs() ",false)
-   ],6
+let q6 = new Question(
+  "6-Which method is used to round a number to the nearest integer in JavaScript? ",
+  [
+    new Answer("Math.ceil() "),
+    new Answer("Math.round()"),
+    new Answer("Math.floor() "),
+    new Answer("Math.abs() "),
+  ],
+  6,
+  "Math.round()"
 );
 
-let q7=new Question("7-Which of the following is not a JavaScript data type?",
-   [ new Answer("Undefined ",false),
-    new Answer("Number ",false),
-    new Answer("Boolean",false),
-    new Answer("Float ",true)
-   ],7
+let q7 = new Question(
+  "7-Which of the following is not a JavaScript data type?",
+  [
+    new Answer("Undefined "),
+    new Answer("Number"),
+    new Answer("Boolean"),
+    new Answer("Float"),
+  ],
+  7,
+  "Float"
 );
 
-let q8=new Question("8-What will be the output of Boolean('false') in JavaScript?",
-   [ new Answer("true ",true),
-    new Answer("false ",false),
-    new Answer("undefined ",false),
-    new Answer("null ",false)
-   ],8
+let q8 = new Question(
+  "8-What will be the output of Boolean('false') in JavaScript?",
+  [
+    new Answer("true"),
+    new Answer("false "),
+    new Answer("undefined "),
+    new Answer("null "),
+  ],
+  8,
+  "true"
 );
 
-let q9=new Question("9-Which event occurs when the user clicks on an HTML element?",
-   [ new Answer("onmouseclick ",false),
-    new Answer("onclick ",true),
-    new Answer("onchange ",false),
-    new Answer("onmouseover ",false)
-   ],9
+let q9 = new Question(
+  "9-Which event occurs when the user clicks on an HTML element?",
+  [
+    new Answer("onmouseclick "),
+    new Answer("onclick"),
+    new Answer("onchange "),
+    new Answer("onmouseover "),
+  ],
+  9,
+  "onclick"
 );
 
-let q10=new Question("10-How do you declare a JavaScript variable?",
-   [ new Answer("var myVar; ",true),
-    new Answer("variable myVar; ",false),
-    new Answer("v myVar; ",false),
-    new Answer("myVar var;",false)
-   ],10
+let q10 = new Question(
+  "10-How do you declare a JavaScript variable?",
+  [
+    new Answer("var myVar;"),
+    new Answer("variable myVar; "),
+    new Answer("v myVar; "),
+    new Answer("myVar var;"),
+  ],
+  10,
+  "var myVar;"
 );
 
-let arrQuestion=[q1,q2,q3,q4,q5,q6,q7,q8,q9,q10];
+let arrQuestion = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
+let bookmarkedQuestions = [];
 
-let title=document.querySelector(".questionTitle");
-let nextButton=document.getElementById("next-btn");
-let previosButton=document.getElementById("prev-btn")
-let answersDiv=document.querySelector(".answers")
+let title = document.querySelector(".questionTitle");
+let nextButton = document.getElementById("next-btn");
+let previosButton = document.getElementById("prev-btn");
+let markButton = document.getElementById("mark-btn");
+let answersDiv = document.querySelector(".answers");
+let markedQuestionDiv = document.querySelector(".marked-question");
 let currentQuestionIndex = 0;
 
 // Shuffle the questions
 shuffle(arrQuestion);
 
 // display questions and answer
-displayQuestion(currentQuestionIndex, arrQuestion, title, answersDiv, previosButton);
+displayQuestion(
+  currentQuestionIndex,
+  arrQuestion,
+  title,
+  answersDiv,
+  previosButton
+);
 
-
-nextButton.addEventListener("click", function() {
+nextButton.addEventListener("click", function () {
+  if (currentQuestionIndex < arrQuestion.length - 1) {
     currentQuestionIndex++;
-    displayQuestion(currentQuestionIndex, arrQuestion, title, answersDiv, previosButton);
+    displayQuestion(
+      currentQuestionIndex,
+      arrQuestion,
+      title,
+      answersDiv,
+      previosButton
+    );
+  }
+  updateNavigationButtons();
+  updateMarkButton();
 });
 
-previosButton.addEventListener("click",function(){
-   if (currentQuestionIndex > 0) {
-      currentQuestionIndex--;
-      displayQuestion(currentQuestionIndex, arrQuestion, title, answersDiv, previosButton);
-   }
+// Event listener for previous button
+previosButton.addEventListener("click", function () {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    displayQuestion(
+      currentQuestionIndex,
+      arrQuestion,
+      title,
+      answersDiv,
+      previosButton
+    );
+  }
+  updateNavigationButtons();
+  updateMarkButton();
 });
-// if (currentQuestionIndex === 0) {
-//    previosButton.style.display = "none";
-// }else{
-//    previosButton.style.display = "block";
-// }
+
+markButton.addEventListener("click", function () {
+  const index = bookmarkedQuestions.indexOf(currentQuestionIndex);
+  if (index > -1) {
+    bookmarkedQuestions.splice(index, 1); // Unmark the question if already bookmarked
+  } else {
+    bookmarkedQuestions.push(currentQuestionIndex); // Mark the question if not already bookmarked
+  }
+  updateBookmarkedQuestionsUI();
+  updateMarkButton();
+});
+
+function updateBookmarkedQuestionsUI() {
+  markedQuestionDiv.innerHTML = "";
+  bookmarkedQuestions.forEach((index) => {
+    console.log(index);
+    const questionElement = document.createElement("div");
+    questionElement.textContent = ` Question : ${arrQuestion[index].number}`;
+    questionElement.classList.add("btn", "btn-warning", "w-100", "my-2");
+    questionElement.addEventListener("click", function () {
+      currentQuestionIndex = index;
+      displayQuestion(
+        currentQuestionIndex,
+        arrQuestion,
+        title,
+        answersDiv,
+        previosButton
+      );
+      updateNavigationButtons();
+      updateMarkButton();
+    });
+    markedQuestionDiv.appendChild(questionElement);
+  });
+}
+
+function updateMarkButton() {
+  const exist = bookmarkedQuestions.indexOf(currentQuestionIndex);
+  if (exist > -1) {
+    markButton.textContent = "Unmark";
+  } else {
+    markButton.textContent = "Mark";
+  }
+}
+
+function updateNavigationButtons() {
+  if (currentQuestionIndex === arrQuestion.length - 1) {
+    nextButton.style.display = "none";
+  } else {
+    nextButton.style.display = "inline";
+  }
+
+  if (currentQuestionIndex === 0) {
+    previosButton.style.display = "none";
+  } else {
+    previosButton.style.display = "inline";
+  }
+}

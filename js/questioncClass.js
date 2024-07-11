@@ -1,9 +1,10 @@
 class Question{
-    constructor(title,answersArr,number){
+    constructor(title,answersArr,number,correctAns){
         
         this.title=title;
         this.answersArr=answersArr;
         this.number=number;
+        this.correctAns=correctAns
 
     }
     toString(){
