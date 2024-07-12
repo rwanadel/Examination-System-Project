@@ -5,36 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exam</title>
     <link rel="stylesheet" href="css/timer.css" />
-    <link rel="stylesheet" href="css/question-and-answer.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/question-and-answer.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
   </head>
   <body>
     <!-- timer -->
-    <div class="timer-container m-2 ">
+    <div class="timer-container m-2">
       <div id="timer-bar"></div>
     </div>
 
     <!-- continer of question and answer -->
 
-    <div class="question-container row m-2 h-75 ">
-      <div class="question col-8   ">
-           <div class="questionTitle fs-2">
-
-           </div>
-           <div class="answers fs-4 text-light  ">
-            
-
-           </div>
-           <button id="prev-btn" class="btn btn-light">previous</button>
-           <button id="next-btn" class="btn btn-light">Next</button>
-           <button id="mark-btn" class="btn btn-warning">Mark</button>
+    <div class="question-container row m-2 h-75">
+      <div class="question col-8">
+        <div class="questionTitle fs-2"></div>
+        <div class="answers fs-4 text-light"></div>
+        <button id="prev-btn" class="btn btn-light">previous</button>
+        <button id="next-btn" class="btn btn-light">Next</button>
+        <button id="mark-btn" class="btn btn-warning">Mark</button>
       </div>
-      <div class="marked-question col-4 ">       
-      </div>
-
+      <div class="marked-question col-4"></div>
+      <button id="submit-btn" class="btn btn-success w-100 mt-3">Submit</button>
     </div>
-
-    <scrip src="js/timer.js"></scrip>
+    <script src="js/timer.js"></script>
     <script type="module" src="js/main.js"></script>
   </body>
 </html>

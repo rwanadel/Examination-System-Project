@@ -125,14 +125,19 @@ let q10 = new Question(
 
 let arrQuestion = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
 let bookmarkedQuestions = [];
+let selectedAnswers = [];
 
 let title = document.querySelector(".questionTitle");
 let nextButton = document.getElementById("next-btn");
 let previosButton = document.getElementById("prev-btn");
 let markButton = document.getElementById("mark-btn");
+let submitButton = document.getElementById("submit-btn");
 let answersDiv = document.querySelector(".answers");
 let markedQuestionDiv = document.querySelector(".marked-question");
+let answerInputFields = document.getElementsByClassName("answer");
+
 let currentQuestionIndex = 0;
+let score = 0;
 
 // Shuffle the questions
 shuffle(arrQuestion);
@@ -143,8 +148,10 @@ displayQuestion(
   arrQuestion,
   title,
   answersDiv,
-  previosButton
+  selectedAnswers,
+  answerInputFields
 );
+updateNavigationButtons();
 
 nextButton.addEventListener("click", function () {
   if (currentQuestionIndex < arrQuestion.length - 1) {
@@ -154,11 +161,13 @@ nextButton.addEventListener("click", function () {
       arrQuestion,
       title,
       answersDiv,
-      previosButton
+      selectedAnswers,
+      answerInputFields
     );
   }
   updateNavigationButtons();
   updateMarkButton();
+  // console.log(answerInputFields);
 });
 
 // Event listener for previous button
@@ -170,7 +179,8 @@ previosButton.addEventListener("click", function () {
       arrQuestion,
       title,
       answersDiv,
-      previosButton
+      selectedAnswers,
+      answerInputFields
     );
   }
   updateNavigationButtons();
@@ -188,6 +198,12 @@ markButton.addEventListener("click", function () {
   updateMarkButton();
 });
 
+submitButton.addEventListener("click", function () {
+  calcScore(arrQuestion, selectedAnswers, score);
+  location.replace("result/result.html");
+  console.log("second  " + score);
+});
+
 function updateBookmarkedQuestionsUI() {
   markedQuestionDiv.innerHTML = "";
   bookmarkedQuestions.forEach((index) => {
@@ -202,7 +218,8 @@ function updateBookmarkedQuestionsUI() {
         arrQuestion,
         title,
         answersDiv,
-        previosButton
+        selectedAnswers,
+        answerInputFields
       );
       updateNavigationButtons();
       updateMarkButton();
@@ -218,6 +235,7 @@ function updateMarkButton() {
   } else {
     markButton.textContent = "Mark";
   }
+  console.log(selectedAnswers);
 }
 
 function updateNavigationButtons() {
@@ -232,4 +250,13 @@ function updateNavigationButtons() {
   } else {
     previosButton.style.display = "inline";
   }
+}
+
+function calcScore(arrQuestion, selectedAnswers, score) {
+  selectedAnswers.forEach((element, i) => {
+    if (element == arrQuestion[i].correctAns) {
+      score++;
+    }
+  });
+  console.log("score " + score);
 }

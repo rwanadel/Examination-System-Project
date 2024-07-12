@@ -1,25 +1,29 @@
-let selectedAnswers = [];
-
-function displayQuestion(index, arrQuestion, title, answersDiv, previosButton) {
-  if (index < arrQuestion.length && index >= 0) {
-    title.innerHTML = arrQuestion[index];
+function displayQuestion(
+  currentQuestionIndex,
+  arrQuestion,
+  title,
+  answersDiv,
+  selectedAnswers,
+  answerInputFields
+) {
+  if (currentQuestionIndex < arrQuestion.length && currentQuestionIndex >= 0) {
+    title.innerHTML = arrQuestion[currentQuestionIndex];
 
     answersDiv.innerHTML = ""; // Clear previous answers
 
     // Generate and append radio buttons and labels for each answer
-    arrQuestion[index].answersArr.forEach((answer, i) => {
-      let answerId = `question${index}_answer${i}`;
+    arrQuestion[currentQuestionIndex].answersArr.forEach((answer, i) => {
+      let answerId = `question${currentQuestionIndex}_answer${i}`;
       let radio = document.createElement("input");
       radio.type = "radio";
-      radio.name = `question${index}`;
+      radio.name = `question${currentQuestionIndex}`;
       radio.id = answerId;
       radio.value = answer;
-      if (radio.checked == true) {
-        radio.checked = selectedAnswers.push(answer);
-        console.log("this" + selectedAnswers);
-      }
-
       radio.setAttribute("class", "styled-radio");
+      radio.classList.add("answer");
+      if (localStorage.getItem(currentQuestionIndex) == radio.value) {
+        radio.checked = true;
+      }
 
       let label = document.createElement("label");
       label.setAttribute("class", "labelAnswer");
@@ -34,12 +38,41 @@ function displayQuestion(index, arrQuestion, title, answersDiv, previosButton) {
       div.appendChild(radio);
 
       answersDiv.appendChild(div);
+
+      // Add event listener to update selectedAnswers when a radio button is checked
+      radio.addEventListener("change", () => {
+        updateAnswersArray(
+          currentQuestionIndex,
+          selectedAnswers,
+          answerInputFields
+        );
+      });
     });
 
-    if (index === 0) {
-      previosButton.style.display = "none";
-    } else {
-      previosButton.style.display = "inline-block";
+    // Call updateAnswersArray after rendering the radio buttons
+    updateAnswersArray(
+      currentQuestionIndex,
+      selectedAnswers,
+      answerInputFields
+    );
+  }
+}
+
+function updateAnswersArray(
+  currentQuestionIndex,
+  selectedAnswers,
+  answerInputFields
+) {
+  selectedAnswers[currentQuestionIndex] = null;
+  for (let i = 0; i < answerInputFields.length; i++) {
+    if (answerInputFields[i].checked) {
+      selectedAnswers[currentQuestionIndex] = answerInputFields[i].value;
+      console.log(selectedAnswers);
+      localStorage.setItem(
+        currentQuestionIndex,
+        `${answerInputFields[i].value}`
+      );
+      break; // Exit loop once the checked answer is found
     }
   }
 }
