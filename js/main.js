@@ -199,9 +199,10 @@ markButton.addEventListener("click", function () {
 });
 
 submitButton.addEventListener("click", function () {
+  localStorage.clear();
   calcScore(arrQuestion, selectedAnswers, score);
+
   location.replace("result/result.html");
-  console.log("second  " + score);
 });
 
 function updateBookmarkedQuestionsUI() {
@@ -258,5 +259,6 @@ function calcScore(arrQuestion, selectedAnswers, score) {
       score++;
     }
   });
+  localStorage.setItem("score", score);
   console.log("score " + score);
 }
