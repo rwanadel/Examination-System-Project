@@ -1,48 +1,80 @@
-let selectedAnswers = [];
+function displayQuestion(
+  currentQuestionIndex,
+  arrQuestion,
+  title,
+  answersDiv,
+  selectedAnswers,
+  answerInputFields
+) {
+  if (currentQuestionIndex < arrQuestion.length && currentQuestionIndex >= 0) {
+    title.innerHTML = arrQuestion[currentQuestionIndex];
 
-function displayQuestion(index , arrQuestion, title, answersDiv, previosButton) {
+    answersDiv.innerHTML = ""; // Clear previous answers
 
-    if (index < arrQuestion.length  && index >= 0) {
-        title.innerHTML = arrQuestion[index];
+    // Generate and append radio buttons and labels for each answer
+    arrQuestion[currentQuestionIndex].answersArr.forEach((answer, i) => {
+      let answerId = `question${currentQuestionIndex}_answer${i}`;
+      let radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = `question${currentQuestionIndex}`;
+      radio.id = answerId;
+      radio.value = answer;
+      radio.setAttribute("class", "styled-radio");
+      radio.classList.add("answer");
+      if (localStorage.getItem(currentQuestionIndex) == radio.value) {
+        radio.checked = true;
+      }
 
-        answersDiv.innerHTML = ""; // Clear previous answers
+      let label = document.createElement("label");
+      label.setAttribute("class", "labelAnswer");
+      label.htmlFor = answerId;
+      label.textContent = answer;
+      label.setAttribute("class", "styled-label");
 
- // Generate and append radio buttons and labels for each answer
-        arrQuestion[index].answersArr.forEach((answer, i) => {
-            let answerId = `question${index}_answer${i}`;
-            console.log(answerId)
+      let div = document.createElement("div");
+      div.setAttribute("class", "continerOfRadioAndLabel");
 
-            let radio = document.createElement("input");
-            radio.type = "radio";
-            radio.name = `question${index}`;
-            radio.id = answerId;
-            radio.value = answer.answerText;
-            radio.setAttribute("class","styled-radio")
+      div.appendChild(label);
+      div.appendChild(radio);
 
+      answersDiv.appendChild(div);
 
-            let label = document.createElement("label");
-            label.setAttribute("class","labelAnswer")
-            label.htmlFor = answerId;
-            label.textContent = answer;
-            label.setAttribute("class","styled-label")
+      // Add event listener to update selectedAnswers when a radio button is checked
+      radio.addEventListener("change", () => {
+        updateAnswersArray(
+          currentQuestionIndex,
+          selectedAnswers,
+          answerInputFields
+        );
+      });
+    });
 
-            let div=document.createElement("div")
-            div.setAttribute("class","continerOfRadioAndLabel")
+    // Call updateAnswersArray after rendering the radio buttons
+    updateAnswersArray(
+      currentQuestionIndex,
+      selectedAnswers,
+      answerInputFields
+    );
+  }
+}
 
-            div.appendChild(label);
-            div.appendChild(radio);
-
-            answersDiv.appendChild(div);
-        });
-        
-
-        if (index === 0) {
-            previosButton.style.display = "none";
-       } else {
-            previosButton.style.display = "inline-block";
-       }
-     }
-   
- }
+function updateAnswersArray(
+  currentQuestionIndex,
+  selectedAnswers,
+  answerInputFields
+) {
+  selectedAnswers[currentQuestionIndex] = null;
+  for (let i = 0; i < answerInputFields.length; i++) {
+    if (answerInputFields[i].checked) {
+      selectedAnswers[currentQuestionIndex] = answerInputFields[i].value;
+      console.log(selectedAnswers);
+      localStorage.setItem(
+        currentQuestionIndex,
+        `${answerInputFields[i].value}`
+      );
+      break; // Exit loop once the checked answer is found
+    }
+  }
+}
 
 export default displayQuestion;

@@ -1,12 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Duration of the exam in seconds
-  const examDuration = 300; // 5 minutes
+  const examDuration = 600; // 5 minutes
 
   // Reference to the timer bar element
   const timerBar = document.getElementById("timer-bar");
 
   // Start time
-  const startTime = Date.now();
+  let startTime = localStorage.getItem("startTime");
+  if (!startTime) {
+    startTime = Date.now();
+    localStorage.setItem("startTime", startTime);
+  }
 
   // Function to update the timer bar
   function updateTimer() {
@@ -25,8 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Check if the time is up
     if (remainingTime <= 0) {
       clearInterval(timerInterval);
-      alert("Time's up!");
-      // Add any additional actions when the exam ends
+      location.replace("result/result.html");
     }
   }
 

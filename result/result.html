@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container my-5 text-center">
+      <h1 class="">Quiz Result</h1>
+      <div>
+        <img id="resultImage" src="" />
+      </div>
+      <p id="resultMessege" class="fs-4"></p>
+
+      <div class="row gx-5">
+        <div class="col">
+          <div class="bg-secondary-subtle py-2">
+            <p class="fs-5 fw-bold">YOUR SCORE</p>
+            <span id="percentageSpan" class="fs-1"></span>
+            <hr class="mx-3" />
+            <p>
+              PASSING SCORE :
+              <span>70%</span>
+            </p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="bg-secondary-subtle py-2">
+            <p class="fs-5 fw-bold">YOUR POINTS</p>
+            <span id="pointsSpan" class="fs-1"></span>
+            <hr class="mx-3" />
+            <p>PASSING POINTS : <span>7</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="result.js"></script>
+  </body>
+</html>
