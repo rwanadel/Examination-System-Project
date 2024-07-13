@@ -1,13 +1,17 @@
-
+:root{
+    --primary-color: #68C8B2;
+    --secondry-color:#cffbf4 ;
+  
+  }
 
 
 .question{
-   background-color:#cffbf4 ;
+   background-color:var(--secondry-color) ;
    height: 500px;
    
 }
 .marked-question{
-    background-color: #4cb8a6;
+    background-color: var(--primary-color);
 
 }
 
@@ -21,9 +25,9 @@
    
     max-width: 70%;
     min-width: 30%;
-    border: 1px solid #4cb8a6 ;
+    border: 1px solid var(--primary-color) ;
     border-radius: 3px;
-    background-color: #4cb8a6;
+    background-color: var(--primary-color);
     display: flex;
     justify-content: space-around;
     margin: 10px;

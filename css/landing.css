@@ -1,0 +1,85 @@
+:root{
+    --primary-color: #68C8B2;
+    --secondry-color:#cffbf4 ;
+    --hover-color:#54b69f;
+
+}
+
+*{
+   padding: 0;
+   margin: 0;
+   box-sizing:content-box;
+   font-family:  "Poppins", sans-serif;
+}
+.parent{
+    display: flex;
+    justify-content: center;
+}
+
+.onlanding{
+    width: 62%;
+    height: 733px;
+    background-image: url("/Examination-System-Project/assets/onlanding_colored.png");
+    background-repeat: no-repeat;
+    background-size: 800px 733px;
+    
+    color: white;
+    font-size: 70px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    
+    
+
+}
+.text1,.text2{
+    width: 40%;
+   
+    margin-bottom: 5px;
+    margin-left: 50px;
+    
+   
+    
+}
+.text1{
+    padding: 70px;
+    padding-bottom: 0px;
+}
+.text2{
+  padding-left: 120px;
+
+}
+.block2{
+    width: 40%;
+   
+}
+.btns{
+    margin-right: 80px;
+    display: flex;
+    justify-content: center;
+}
+button{
+    color: white;
+    background-color: var(--primary-color);
+    font-size: 25px;
+    margin: 30px;
+    padding: 12px 15px ;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: var(--hover-color);
+}
+.vector-img{
+margin-right: 100px;
+margin-top: 80px;
+}
+.note{
+    width: 30%;
+    color: white;
+    font-size: 25px;
+    line-height: 1.2;
+    
+    margin: 130px 100px;
+}

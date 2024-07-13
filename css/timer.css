@@ -1,4 +1,9 @@
 /* styles.css */
+:root{
+  --primary-color: #68C8B2;
+  --secondry-color:#cffbf4 ;
+
+}
 
 body {
   font-family: Arial, sans-serif;
@@ -15,6 +20,6 @@ body {
 #timer-bar {
   width: 0%; /* Start with width 0% */
   height: 30px;
-  background-color: #4caf50;
+  background-color: var(--primary-color);
   transition: width 1s linear; /* Smooth transition animation */
 }

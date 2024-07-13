@@ -12,7 +12,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     }
 
     if (email === storedUserData.email && password === storedUserData.password) {
-         window.location.href("../exam.html");
+          window.location.replace("exam.html");
+        //alert("good")
         
         // Redirect to the Quiz page 
     } else {
