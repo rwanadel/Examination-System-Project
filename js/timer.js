@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Duration of the exam in seconds
-  const examDuration = 600; // 5 minutes
+  const examDuration = 6000; // 5 minutes
 
   // Reference to the timer bar element
   const timerBar = document.getElementById("timer-bar");
