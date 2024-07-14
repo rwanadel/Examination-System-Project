@@ -19,7 +19,7 @@
 .onlanding{
     width: 62%;
     height: 733px;
-    background-image: url("/Examination-System-Project/assets/onlanding_colored.png");
+    background-image: url("../assets/onlanding_colored.png");
     background-repeat: no-repeat;
     background-size: 800px 733px;
     

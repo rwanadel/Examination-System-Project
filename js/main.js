@@ -10,7 +10,7 @@ import calcScore from "./calcScore.js";
 let q1 = new Question(
   "1-What is the correct syntax to print a message in the console in JavaScript?",
   [
-    new Answer("console.print('Hello World!'); "),
+    new Answer("A- console.print('Hello World!'); "),
     new Answer("console.log('Hello World!');"),
     new Answer("print.console('Hello World!'); "),
     new Answer("log.console('Hello World!'); "),
@@ -230,7 +230,7 @@ markButton.addEventListener("click", function () {
 });
 
 submitButton.addEventListener("click", function () {
-  localStorage.clear();
+//localStorage.clear();
   calcScore(arrQuestion, selectedAnswers, score);
   location.replace("result/result.html");
 });

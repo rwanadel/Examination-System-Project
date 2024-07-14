@@ -19,7 +19,8 @@ function updateBookmarkedQuestionsUI(
   bookmarkedQuestions.forEach((index) => {
     const questionElement = document.createElement("div");
     questionElement.textContent = ` Question : ${arrQuestion[index].number}`;
-    questionElement.classList.add("btn", "btn-warning", "w-100", "my-2");
+    questionElement.classList.add("btn", "btn-warning", "w-100", "my-2" );
+    
     questionElement.addEventListener("click", function () {
       currentQuestionIndex = index;
       displayQuestion(
