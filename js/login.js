@@ -13,13 +13,13 @@ document
       return;
     }
 
-    if (
-      email === storedUserData.email &&
-      password === storedUserData.password
-    ) {
-      location.replace("../exam.html");
 
-      // Redirect to the Quiz page
+    if (email === storedUserData.email && password === storedUserData.password) {
+          window.location.replace("exam.html");
+        //alert("good")
+        
+        // Redirect to the Quiz page
+
     } else {
       alert("Invalid email or password.");
     }

@@ -1,4 +1,53 @@
+:root{
+    --primary-color: #68C8B2;
+    --secondry-color:#cffbf4 ;
+    --hover-color:#54b69f;
+  
+  }
+
+
 .container {
     max-width: 500px;
     margin-top: 50px;
+}
+.login{
+    background-color:var(--primary-color) ;
+    color: white;
+    font-size: 25px;
+    padding:10px 40px;
+    margin-left: 35%;
+    margin-top: 5px;
+    
+}
+.login:hover{
+    background-color: var(--hover-color);
+    color: white;
+}
+.login-box{
+    border: 2px solid white;
+    box-shadow: 0px 0px 14px 4px #cbced1, -14px -14px 20px white;
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 150px;
+    height: 400px;
+}
+
+
+.signup{
+    background-color:var(--primary-color) ;
+    color: white;
+    font-size: 25px;
+    padding:10px 40px;
+    margin-left: 35%;
+    margin-top: 5px;
+}
+.signup:hover{
+    background-color: var(--hover-color);
+    color: white;
+}
+.signup-box{
+    border: 2px solid white;
+    box-shadow: 0px 0px 14px 4px #cbced1, -14px -14px 20px white;
+    border-radius: 20px;
+    padding: 40px;
 }
