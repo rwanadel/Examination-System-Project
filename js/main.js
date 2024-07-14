@@ -2,6 +2,10 @@ import Question from "./questioncClass.js";
 import Answer from "./answersClass.js";
 import displayQuestion from "./displayQuestionFunction.js";
 import shuffle from "./randoQuestion.js";
+import updateBookmarkedQuestionsUI from "./updateBookmarkedQuestionsUI.js";
+import updateNavigationButtons from "./updateNavigationButtons.js";
+import updateMarkButton from "./updateMarkButton.js";
+import calcScore from "./calcScore.js";
 
 let q1 = new Question(
   "1-What is the correct syntax to print a message in the console in JavaScript?",
@@ -151,7 +155,12 @@ displayQuestion(
   selectedAnswers,
   answerInputFields
 );
-updateNavigationButtons();
+updateNavigationButtons(
+  currentQuestionIndex,
+  arrQuestion,
+  nextButton,
+  previosButton
+);
 
 nextButton.addEventListener("click", function () {
   if (currentQuestionIndex < arrQuestion.length - 1) {
@@ -165,8 +174,13 @@ nextButton.addEventListener("click", function () {
       answerInputFields
     );
   }
-  updateNavigationButtons();
-  updateMarkButton();
+  updateNavigationButtons(
+    currentQuestionIndex,
+    arrQuestion,
+    nextButton,
+    previosButton
+  );
+  updateMarkButton(bookmarkedQuestions, currentQuestionIndex, markButton);
   // console.log(answerInputFields);
 });
 
@@ -183,8 +197,13 @@ previosButton.addEventListener("click", function () {
       answerInputFields
     );
   }
-  updateNavigationButtons();
-  updateMarkButton();
+  updateNavigationButtons(
+    currentQuestionIndex,
+    arrQuestion,
+    nextButton,
+    previosButton
+  );
+  updateMarkButton(bookmarkedQuestions, currentQuestionIndex, markButton);
 });
 
 markButton.addEventListener("click", function () {
@@ -194,71 +213,24 @@ markButton.addEventListener("click", function () {
   } else {
     bookmarkedQuestions.push(currentQuestionIndex); // Mark the question if not already bookmarked
   }
-  updateBookmarkedQuestionsUI();
-  updateMarkButton();
+  updateBookmarkedQuestionsUI(
+    markedQuestionDiv,
+    bookmarkedQuestions,
+    currentQuestionIndex,
+    arrQuestion,
+    title,
+    answersDiv,
+    selectedAnswers,
+    answerInputFields,
+    nextButton,
+    previosButton,
+    markButton
+  );
+  updateMarkButton(bookmarkedQuestions, currentQuestionIndex, markButton);
 });
 
 submitButton.addEventListener("click", function () {
   localStorage.clear();
   calcScore(arrQuestion, selectedAnswers, score);
-
   location.replace("result/result.html");
 });
-
-function updateBookmarkedQuestionsUI() {
-  markedQuestionDiv.innerHTML = "";
-  bookmarkedQuestions.forEach((index) => {
-    console.log(index);
-    const questionElement = document.createElement("div");
-    questionElement.textContent = ` Question : ${arrQuestion[index].number}`;
-    questionElement.classList.add("btn", "btn-warning", "w-100", "my-2");
-    questionElement.addEventListener("click", function () {
-      currentQuestionIndex = index;
-      displayQuestion(
-        currentQuestionIndex,
-        arrQuestion,
-        title,
-        answersDiv,
-        selectedAnswers,
-        answerInputFields
-      );
-      updateNavigationButtons();
-      updateMarkButton();
-    });
-    markedQuestionDiv.appendChild(questionElement);
-  });
-}
-
-function updateMarkButton() {
-  const exist = bookmarkedQuestions.indexOf(currentQuestionIndex);
-  if (exist > -1) {
-    markButton.textContent = "Unmark";
-  } else {
-    markButton.textContent = "Mark";
-  }
-  console.log(selectedAnswers);
-}
-
-function updateNavigationButtons() {
-  if (currentQuestionIndex === arrQuestion.length - 1) {
-    nextButton.style.display = "none";
-  } else {
-    nextButton.style.display = "inline";
-  }
-
-  if (currentQuestionIndex === 0) {
-    previosButton.style.display = "none";
-  } else {
-    previosButton.style.display = "inline";
-  }
-}
-
-function calcScore(arrQuestion, selectedAnswers, score) {
-  selectedAnswers.forEach((element, i) => {
-    if (element == arrQuestion[i].correctAns) {
-      score++;
-    }
-  });
-  localStorage.setItem("score", score);
-  console.log("score " + score);
-}
