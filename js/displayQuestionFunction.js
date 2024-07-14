@@ -19,9 +19,9 @@ function displayQuestion(
       radio.type = "radio";
       radio.name = `question${currentQuestionIndex}`;
       radio.id = answerId;
-      radio.value = answer;
+      radio.value = answer.answer;
       radio.setAttribute("class", "styled-radio");
-      radio.classList.add("answer", "form-check-input"); // Add Bootstrap class for form input
+      radio.classList.add("answer", "form-check-input"); 
 
       // Check if the answer was previously selected
       if (localStorage.getItem(currentQuestionIndex) == radio.value) {
@@ -31,11 +31,11 @@ function displayQuestion(
       let label = document.createElement("label");
       label.setAttribute("class", "labelAnswer");
       label.htmlFor = answerId;
-      label.textContent = answer;
-      label.setAttribute("class", "styled-label form-check-label"); // Add Bootstrap class for form label
+      label.textContent = answer.answer;
+      label.setAttribute("class", "styled-label form-check-label"); 
 
       let div = document.createElement("div");
-      div.setAttribute("class", "continerOfRadioAndLabel form-check mb-2 ps-5"); // Add Bootstrap class for spacing
+      div.setAttribute("class", "continerOfRadioAndLabel form-check mb-2 ps-5"); 
 
       div.appendChild(radio);
       div.appendChild(label);

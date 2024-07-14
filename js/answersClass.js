@@ -1,5 +1,5 @@
 class Answer {
-  constructor(answer, correct) {
+  constructor(answer) {
     this.answer = answer;
   }
   toString() {
