@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="css/question-and-answer.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
   </head>
+  <style>
+     .col-8 {
+            padding-left: 0 !important;
+            
+        }
+  </style>
   <body>
     <!-- timer -->
     <div class="timer-container m-2">
@@ -15,18 +21,26 @@
     </div>
 
     <!-- continer of question and answer -->
-
-    <div class="question-container row m-2 h-75">
-      <div class="question col-8">
+<div >
+  <div class="question-container  row m-2 h-75 gy-2">
+    <div class="col-8  " >
+      <div class="question px-3  ">
         <div class="questionTitle fs-2"></div>
         <div class="answers fs-4 text-light"></div>
-        <button id="prev-btn" class="btn btn-light">previous</button>
-        <button id="next-btn" class="btn btn-light">Next</button>
-        <button id="mark-btn" class="btn btn-warning">Mark</button>
+        <div class="btns">
+        <button id="prev-btn" class="btn btncolor fs-4 px-3 py-1 my-5  ">previous</button>
+        <button id="next-btn" class="btn btncolor fs-4 px-3 py-1 my-5 ">Next</button>
+        <button id="mark-btn" class="btn btn-warning fs-4 px-3 py-1 my-5">Mark</button>
       </div>
-      <div class="marked-question col-4"></div>
-      <button id="submit-btn" class="btn btn-success w-100 mt-3">Submit</button>
+      </div>
     </div>
+  <div class="marked-question col-4">
+    <div ></div>
+  </div>
+  <button id="submit-btn" class="btn btn-success  mt-3">Submit</button>
+</div>
+</div>
+    
     <script src="js/timer.js"></script>
     <script type="module" src="js/main.js"></script>
   </body>

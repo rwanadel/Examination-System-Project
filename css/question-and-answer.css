@@ -6,31 +6,49 @@
 
 
 .question{
-   background-color:var(--secondry-color) ;
-   height: 500px;
+   background-color:white ;
+   border-radius: 10px;
+   box-shadow: 0px 0px 17px 5px #e5e7e6 ;
+   /* height: 500px; */
    
 }
 .marked-question{
     background-color: var(--primary-color);
+    border-radius: 10px;
+    padding: 10px;
 
 }
 
 .answers{
     display: flex;
     flex-direction: column;
+    margin: 30px 0;
     margin-left: 30%;
+    
     
 }
 .continerOfRadioAndLabel{
    
     max-width: 70%;
-    min-width: 30%;
+    min-width: 30%; 
     border: 1px solid var(--primary-color) ;
-    border-radius: 3px;
+    border-radius: 10px;
     background-color: var(--primary-color);
     display: flex;
     justify-content: space-around;
     margin: 10px;
+    padding: 10px;
 }
+.btns{
+    /* background-color: blueviolet; */
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.btncolor{
+    background-color: var(--primary-color) !important;
+    color:white !important;
+}
+
 
 

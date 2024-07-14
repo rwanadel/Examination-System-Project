@@ -8,7 +8,7 @@ let scorePercentage = ((score / 10) * 100).toFixed(1);
 function handleExamSuccess(score, scorePercentage) {
   document
     .getElementById("resultImage")
-    .setAttribute("src", "/assets/icons/check-circle.png");
+    .setAttribute("src", "../assets/icons/check-circle.png");
 
   document.getElementById("resultMessege").textContent =
     "Nice job, you passed!";
@@ -21,7 +21,7 @@ function handleExamSuccess(score, scorePercentage) {
 function handleExamFail(score, scorePercentage) {
   document
     .getElementById("resultImage")
-    .setAttribute("src", "/assets/icons/x-circle-fill.png");
+    .setAttribute("src", "../assets/icons/x-circle-fill.png");
 
   document.getElementById("resultMessege").textContent =
     "Sorry, you didn't pass";

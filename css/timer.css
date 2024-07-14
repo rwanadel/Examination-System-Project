@@ -12,12 +12,14 @@ body {
 .timer-container {
   background-color: #f3f3f3;
   border: 1px solid #ccc;
+  
   position: relative;
 }
 
 #timer-bar {
   width: 0%; /* Start with width 0% */
-  height: 30px;
+  height: 20px;
   background-color: var(--primary-color);
   transition: width 1s linear; /* Smooth transition animation */
+ 
 }
