@@ -127,7 +127,7 @@ let q10 = new Question(
   "var myVar;"
 );
 
-let arrQuestion = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
+let arrQuestion1 = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
 let bookmarkedQuestions = [];
 let selectedAnswers = [];
 
@@ -144,7 +144,18 @@ let currentQuestionIndex = 0;
 let score = 0;
 
 // Shuffle the questions
-shuffle(arrQuestion);
+let arrQuestion;
+
+// Check if the shuffled array is already stored in local storage
+if (localStorage.getItem('shuffledQuestions')) {
+  arrQuestion = JSON.parse(localStorage.getItem('shuffledQuestions'));
+} else {
+  arrQuestion = shuffle(arrQuestion1);
+  localStorage.setItem('shuffledQuestions', JSON.stringify(arrQuestion));
+}
+
+// Now you can pass shuffledQuestions to other functions
+console.log(arrQuestion);
 
 // display questions and answer
 displayQuestion(
