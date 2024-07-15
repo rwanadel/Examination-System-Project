@@ -1,3 +1,5 @@
+
+
 function displayQuestion(
   currentQuestionIndex,
   arrQuestion,
@@ -6,13 +8,17 @@ function displayQuestion(
   selectedAnswers,
   answerInputFields
 ) {
-  if (currentQuestionIndex < arrQuestion.length && currentQuestionIndex >= 0) {
+  let markButton = document.getElementById("mark-btn");
+  console.log(arrQuestion)
+  console.log(arrQuestion[currentQuestionIndex])
+  // if (currentQuestionIndex < arrQuestion.length && currentQuestionIndex >= 0) {
     // Wrap the question title in a Bootstrap-styled element
     title.innerHTML = `<div class="mb-3"><h4">${arrQuestion[currentQuestionIndex].title}</h4></div>`;
 
     answersDiv.innerHTML = ""; // Clear previous answers
 
     // Generate and append radio buttons and labels for each answer
+    markButton.setAttribute("data-index", currentQuestionIndex);
     arrQuestion[currentQuestionIndex].answersArr.forEach((answer, i) => {
       let answerId = `question${currentQuestionIndex}_answer${i}`;
       let radio = document.createElement("input");
@@ -59,7 +65,7 @@ function displayQuestion(
         );
       });
     });
-
+    
     // Call updateAnswersArray after rendering the radio buttons
     updateAnswersArray(
       currentQuestionIndex,
@@ -67,7 +73,7 @@ function displayQuestion(
       answerInputFields
     );
   }
-}
+// }
 
 function updateAnswersArray(
   currentQuestionIndex,
@@ -78,7 +84,6 @@ function updateAnswersArray(
   for (let i = 0; i < answerInputFields.length; i++) {
     if (answerInputFields[i].checked) {
       selectedAnswers[currentQuestionIndex] = answerInputFields[i].value;
-      console.log(selectedAnswers);
       localStorage.setItem(
         currentQuestionIndex,
         `${answerInputFields[i].value}`
