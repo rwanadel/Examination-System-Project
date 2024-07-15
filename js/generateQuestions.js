@@ -3,7 +3,7 @@ import Answer from "./Classes/Answer.js";
 
 export default function generateQuestions() {
   let q1 = new Question(
-    "1-What is the correct syntax to print a message in the console in JavaScript?",
+    "What is the correct syntax to print a message in the console in JavaScript?",
     [
       new Answer("A- console.print('Hello World!'); "),
       new Answer("console.log('Hello World!');"),
@@ -13,9 +13,9 @@ export default function generateQuestions() {
     1,
     "console.log('Hello World!');"
   );
-  
+
   let q2 = new Question(
-    "2-Which company developed JavaScript?",
+    "Which company developed JavaScript?",
     [
       new Answer("Microsoft "),
       new Answer("Google "),
@@ -25,9 +25,9 @@ export default function generateQuestions() {
     2,
     "Netscape"
   );
-  
+
   let q3 = new Question(
-    "3-Which of the following is the correct way to create a new array in JavaScript?",
+    "Which of the following is the correct way to create a new array in JavaScript?",
     [
       new Answer("var colors = 'red', 'green', 'blue'; "),
       new Answer("var colors = ['red', 'green', 'blue'];"),
@@ -37,9 +37,9 @@ export default function generateQuestions() {
     3,
     "var colors = ['red', 'green', 'blue'];"
   );
-  
+
   let q4 = new Question(
-    "4-How can you add a comment in JavaScript?",
+    "How can you add a comment in JavaScript?",
     [
       new Answer("<!-- This is a comment --> "),
       new Answer("/* This is a comment */ "),
@@ -49,9 +49,9 @@ export default function generateQuestions() {
     4,
     "// This is a comment"
   );
-  
+
   let q5 = new Question(
-    " 5-What is the output of typeof NaN in JavaScript?",
+    "What is the output of typeof NaN in JavaScript?",
     [
       new Answer("number"),
       new Answer("NaN "),
@@ -61,9 +61,9 @@ export default function generateQuestions() {
     5,
     "number"
   );
-  
+
   let q6 = new Question(
-    "6-Which method is used to round a number to the nearest integer in JavaScript? ",
+    "Which method is used to round a number to the nearest integer in JavaScript? ",
     [
       new Answer("Math.ceil() "),
       new Answer("Math.round()"),
@@ -73,9 +73,9 @@ export default function generateQuestions() {
     6,
     "Math.round()"
   );
-  
+
   let q7 = new Question(
-    "7-Which of the following is not a JavaScript data type?",
+    "Which of the following is not a JavaScript data type?",
     [
       new Answer("Undefined "),
       new Answer("Number"),
@@ -85,9 +85,9 @@ export default function generateQuestions() {
     7,
     "Float"
   );
-  
+
   let q8 = new Question(
-    "8-What will be the output of Boolean('false') in JavaScript?",
+    "What will be the output of Boolean('false') in JavaScript?",
     [
       new Answer("true"),
       new Answer("false "),
@@ -97,9 +97,9 @@ export default function generateQuestions() {
     8,
     "true"
   );
-  
+
   let q9 = new Question(
-    "9-Which event occurs when the user clicks on an HTML element?",
+    "Which event occurs when the user clicks on an HTML element?",
     [
       new Answer("onmouseclick "),
       new Answer("onclick"),
@@ -109,9 +109,9 @@ export default function generateQuestions() {
     9,
     "onclick"
   );
-  
+
   let q10 = new Question(
-    "10-How do you declare a JavaScript variable?",
+    "How do you declare a JavaScript variable?",
     [
       new Answer("var myVar;"),
       new Answer("variable myVar; "),
@@ -122,6 +122,5 @@ export default function generateQuestions() {
     "var myVar;"
   );
   let arrQuestion = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
-  return arrQuestion
+  return arrQuestion;
 }
-
