@@ -28,6 +28,13 @@ document
       return;
     }
 
+    // Check if the email is already registered
+    const existingUser = usersArr.find((user) => user.email === email);
+    if (existingUser) {
+      alert("This email is already registered.");
+      return;
+    }
+
     const user = new User(firstName, lastName, email, password);
 
     let usersArr = JSON.parse(localStorage.getItem("usersData")) || [];
