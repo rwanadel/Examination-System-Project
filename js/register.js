@@ -1,3 +1,5 @@
+import User from "./Classes/User.js";
+
 document
   .getElementById("registrationForm")
   .addEventListener("submit", function (event) {
@@ -26,8 +28,13 @@ document
       return;
     }
 
-    const userData = { firstName, lastName, email, password };
-    localStorage.setItem("userData", JSON.stringify(userData));
+    const user = new User(firstName, lastName, email, password);
+
+    let usersArr = JSON.parse(localStorage.getItem("usersData")) || [];
+
+    usersArr.push(user);
+
+    localStorage.setItem("usersData", JSON.stringify(usersArr));
 
     location.replace("./login.html");
   });
