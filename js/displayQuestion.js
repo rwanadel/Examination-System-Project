@@ -4,73 +4,70 @@ function displayQuestion(
   title,
   answersDiv,
   selectedAnswers,
-  answerInputFields
+  answerInputFields,
+  questionNumber
 ) {
   let markButton = document.getElementById("mark-btn");
-  console.log(arrQuestion)
-  console.log(arrQuestion[currentQuestionIndex])
   // if (currentQuestionIndex < arrQuestion.length && currentQuestionIndex >= 0) {
-    // Wrap the question title in a Bootstrap-styled element
-    title.innerHTML = `<div class="mb-3"><h4">${arrQuestion[currentQuestionIndex].title}</h4></div>`;
+  // Wrap the question title in a Bootstrap-styled element
+  questionNumber.textContent = `Question: ${arrQuestion[currentQuestionIndex].number}`;
+  console.log(arrQuestion[currentQuestionIndex].title);
+  title.innerHTML = `<div class="mb-3"><h4">${arrQuestion[currentQuestionIndex].title}</h4></div>`;
 
-    answersDiv.innerHTML = ""; // Clear previous answers
+  answersDiv.innerHTML = ""; // Clear previous answers
 
-    // Generate and append radio buttons and labels for each answer
-    markButton.setAttribute("data-index", currentQuestionIndex);
-    arrQuestion[currentQuestionIndex].answersArr.forEach((answer, i) => {
-      let answerId = `question${currentQuestionIndex}_answer${i}`;
-      let radio = document.createElement("input");
-      radio.type = "radio";
-      radio.name = `question${currentQuestionIndex}`;
-      radio.id = answerId;
-      radio.value = answer.answer;
-      radio.setAttribute("class", "styled-radio");
-      radio.classList.add("answer", "form-check-input"); 
+  // Generate and append radio buttons and labels for each answer
+  markButton.setAttribute("data-index", currentQuestionIndex);
+  arrQuestion[currentQuestionIndex].answersArr.forEach((answer, i) => {
+    let answerId = `question${currentQuestionIndex}_answer${i}`;
+    let radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = `question${currentQuestionIndex}`;
+    radio.id = answerId;
+    radio.value = answer.answer;
+    radio.setAttribute("class", "styled-radio");
+    radio.classList.add("answer", "form-check-input");
 
-      // Check if the answer was previously selected
-      if (localStorage.getItem(currentQuestionIndex) == radio.value) {
-        radio.checked = true;
-      }
+    // Check if the answer was previously selected
+    if (localStorage.getItem(currentQuestionIndex) == radio.value) {
+      radio.checked = true;
+    }
 
-      let label = document.createElement("label");
-      label.setAttribute("class", "labelAnswer");
-      label.htmlFor = answerId;
-      label.textContent = answer.answer;
-      label.setAttribute("class", "styled-label form-check-label"); 
+    let label = document.createElement("label");
+    label.setAttribute("class", "labelAnswer");
+    label.htmlFor = answerId;
+    label.textContent = answer.answer;
+    label.setAttribute("class", "styled-label form-check-label");
 
-      let div = document.createElement("div");
-      div.setAttribute("class", "continerOfRadioAndLabel form-check mb-2 ps-5"); 
+    let div = document.createElement("div");
+    div.setAttribute("class", "continerOfRadioAndLabel form-check mb-2 ps-5");
 
-      div.appendChild(radio);
-      div.appendChild(label);
+    div.appendChild(radio);
+    div.appendChild(label);
 
-      answersDiv.appendChild(div);
+    answersDiv.appendChild(div);
 
-      div.addEventListener("click", () => {
-        radio.checked = true;
-        updateAnswersArray(
-          currentQuestionIndex,
-          selectedAnswers,
-          answerInputFields
-        );
-      });
-      // Add event listener to update selectedAnswers when a radio button is checked
-      radio.addEventListener("change", () => {
-        updateAnswersArray(
-          currentQuestionIndex,
-          selectedAnswers,
-          answerInputFields
-        );
-      });
+    div.addEventListener("click", () => {
+      radio.checked = true;
+      updateAnswersArray(
+        currentQuestionIndex,
+        selectedAnswers,
+        answerInputFields
+      );
     });
-    
-    // Call updateAnswersArray after rendering the radio buttons
-    updateAnswersArray(
-      currentQuestionIndex,
-      selectedAnswers,
-      answerInputFields
-    );
-  }
+    // Add event listener to update selectedAnswers when a radio button is checked
+    radio.addEventListener("change", () => {
+      updateAnswersArray(
+        currentQuestionIndex,
+        selectedAnswers,
+        answerInputFields
+      );
+    });
+  });
+
+  // Call updateAnswersArray after rendering the radio buttons
+  updateAnswersArray(currentQuestionIndex, selectedAnswers, answerInputFields);
+}
 // }
 
 function updateAnswersArray(

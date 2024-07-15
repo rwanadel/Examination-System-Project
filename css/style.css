@@ -1,7 +1,7 @@
 :root{
     --primary-color: #68C8B2;
     --secondry-color:#cffbf4 ;
-    --hover-color:#54b69f;
+    --hover-color:#3b9e87;
   
   }
 
@@ -25,7 +25,7 @@
 }
 .login-box{
     border: 2px solid white;
-    box-shadow: 0px 0px 14px 4px #cbced1, -14px -14px 20px white;
+    box-shadow: 0px 0px 9px 0px #cbced17a, -14px -14px 20px white;
     border-radius: 20px;
     padding: 40px;
     margin-top: 150px;
@@ -47,7 +47,54 @@
 }
 .signup-box{
     border: 2px solid white;
-    box-shadow: 0px 0px 14px 4px #cbced1, -14px -14px 20px white;
+    box-shadow: 0px 0px 9px 0px #cbced17a, -14px -14px 20px white;
     border-radius: 20px;
     padding: 40px;
+    margin-top: 60px;
 }
+
+#loginForm{
+    position: relative;
+}
+.containerOfloginImg {
+    display: flex;
+    justify-content: flex-end;
+    
+    width: 100%;
+}
+.loginImg{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 81%;
+    top: 77%;
+}
+.containerOfsignImg{
+    display: flex;
+    justify-content: flex-end;
+    
+    width: 100%;
+}
+.signImg{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 60%;
+    top: -1%;
+}
+.account{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+@media screen and (max-width :785px) {
+    .loginImg{
+        display:none ;
+    }
+}
+@media screen and (max-width :785px) {
+    .signImg{
+        display:none ;
+    }
+}
+
