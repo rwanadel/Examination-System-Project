@@ -1,6 +1,8 @@
 :root{
     --primary-color: #68C8B2;
     --secondry-color:#cffbf4 ;
+    --hovercolor:#3b9e87;
+    --bluercolor:#68c8b214;
   
   }
 
@@ -8,46 +10,79 @@
 .question{
    background-color:white ;
    border-radius: 10px;
-   box-shadow: 0px 0px 17px 5px #e5e7e6 ;
+   border: 1px solid gray;
    /* height: 500px; */
    
 }
 .marked-question{
-    background-color: var(--primary-color);
+    background-color: white;
     border-radius: 10px;
     padding: 10px;
+    height: 600px;
+    border: 1px solid gray;
+    overflow-y: scroll;
+    
 
+
+}
+.marked-button{
+    margin-top:0 !important;
 }
 
 .answers{
     display: flex;
     flex-direction: column;
     margin: 30px 0;
-    margin-left: 30%;
     
     
 }
 .continerOfRadioAndLabel{
    
     max-width: 70%;
-    min-width: 30%; 
-    border: 1px solid var(--primary-color) ;
+    min-width: 30%;
+    border: 1px solid gray ;
     border-radius: 10px;
-    background-color: var(--primary-color);
+    background-color: var(--bluercolor);
     display: flex;
     justify-content: space-around;
     margin: 10px;
     padding: 10px;
+    
 }
 .btns{
     /* background-color: blueviolet; */
     padding: 0 20px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 .btncolor{
     background-color: var(--primary-color) !important;
     color:white !important;
+}
+.btncolor:hover{
+    background-color: var(--hovercolor) !important;
+}
+.btnprevcolor{
+    background-color: white !important;
+    border: 2px solid var(--primary-color) !important;
+
+
+}
+#submit-btn{
+    background-color: var(--primary-color);
+    margin: 20px 0;
+    
+
+    
+
+}
+#submit-btn:hover{
+    background-color:var(--hovercolor) ;
+    
+}
+.marked-button{
+    border:1px solid var(--primary-color) !important ;
+    
 }
 
 

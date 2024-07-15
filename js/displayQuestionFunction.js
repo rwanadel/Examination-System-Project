@@ -4,10 +4,12 @@ function displayQuestion(
   title,
   answersDiv,
   selectedAnswers,
-  answerInputFields
+  answerInputFields,
+  questionNumber
 ) {
   if (currentQuestionIndex < arrQuestion.length && currentQuestionIndex >= 0) {
     // Wrap the question title in a Bootstrap-styled element
+    questionNumber.innerHTML=`Question: ${arrQuestion[currentQuestionIndex].number}`
     title.innerHTML = `<div class="mb-3"><h4">${arrQuestion[currentQuestionIndex].title}</h4></div>`;
 
     answersDiv.innerHTML = ""; // Clear previous answers

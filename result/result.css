@@ -1,0 +1,9 @@
+:root{
+    --primary-color: #68C8B2;
+    --secondry-color:#cffbf4 ;
+    --hover-color:#54b69f;
+
+}
+.title-result{
+    color: var(--primary-color);
+}

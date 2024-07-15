@@ -5,14 +5,14 @@ export default function updateNavigationButtons(
   previosButton
 ) {
   if (currentQuestionIndex === arrQuestion.length - 1) {
-    nextButton.style.display = "none";
+    nextButton.style.visibility = "hidden";
   } else {
-    nextButton.style.display = "inline";
+    nextButton.style.visibility = "visible";
   }
 
   if (currentQuestionIndex === 0) {
-    previosButton.style.display = "none";
+    previosButton.style.visibility = "hidden";
   } else {
-    previosButton.style.display = "inline";
+    previosButton.style.visibility = "visible";
   }
 }
