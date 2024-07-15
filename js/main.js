@@ -26,11 +26,11 @@ let score = 0;
 let arrQuestion;
 
 // Check if the shuffled array is already stored in local storage
-if (localStorage.getItem('shuffledQuestions')) {
-  arrQuestion = JSON.parse(localStorage.getItem('shuffledQuestions'));
+if (localStorage.getItem("shuffledQuestions")) {
+  arrQuestion = JSON.parse(localStorage.getItem("shuffledQuestions"));
 } else {
   arrQuestion = shuffle(fixedQuestionsArr);
-  localStorage.setItem('shuffledQuestions', JSON.stringify(arrQuestion));
+  localStorage.setItem("shuffledQuestions", JSON.stringify(arrQuestion));
 }
 
 // display questions and answer
@@ -94,19 +94,14 @@ previosButton.addEventListener("click", function () {
 });
 
 markButton.addEventListener("click", function (e) {
-  const currentIndex = e.target.getAttribute('data-index');
-  console.log(`currindex from markbtn ${currentIndex}`);
+  const currentIndex = e.target.getAttribute("data-index");
 
-  if (bookmarkedQuestions.indexOf(currentIndex)>-1) {
-    console.log('if111111');
+  if (bookmarkedQuestions.indexOf(currentIndex) > -1) {
     markButton.textContent = "Mark"; // Unmark the question if already bookmarked
     bookmarkedQuestions.splice(bookmarkedQuestions.indexOf(currentIndex), 1);
-    console.log(bookmarkedQuestions)
   } else if (bookmarkedQuestions.indexOf(currentIndex)) {
-    console.log('if2222222222');
     markButton.textContent = "Unmark"; // Mark the question if not already bookmarked
     bookmarkedQuestions.push(currentIndex);
-    console.log(bookmarkedQuestions)
   }
   updateBookmarkedQuestionsUI(
     markedQuestionDiv,
@@ -120,12 +115,14 @@ markButton.addEventListener("click", function (e) {
     nextButton,
     previosButton,
     markButton
-  )
+  );
 });
 
-
 submitButton.addEventListener("click", function () {
-//localStorage.clear();
+  let usersArr = JSON.parse(localStorage.getItem("usersData"));
+  localStorage.clear();
+  localStorage.setItem("usersData", JSON.stringify(usersArr));
+
   calcScore(arrQuestion, selectedAnswers, score);
   location.replace("result/result.html");
 });
