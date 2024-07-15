@@ -13,8 +13,10 @@ function updateBookmarkedQuestionsUI(
   answerInputFields,
   nextButton,
   previosButton,
-  markButton
+  markButton,
+  questionNumber
 ) {
+  // let questionNumber = document.querySelector(".question-number");
   markedQuestionDiv.innerHTML = "";
   bookmarkedQuestions.forEach((index) => {
     index = +index;
