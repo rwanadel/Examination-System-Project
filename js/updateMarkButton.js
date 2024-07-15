@@ -1,10 +1,12 @@
-export default function updateMarkButton(
+export default function   updateMarkButton(
   bookmarkedQuestions,
   currentQuestionIndex,
   markButton
 ) {
-  const exist = bookmarkedQuestions.indexOf(currentQuestionIndex);
-  if (exist > -1) {
+ 
+  let dataIndex= markButton.getAttribute('data-index')
+  const exist = bookmarkedQuestions.includes(dataIndex);
+  if (exist) {
     markButton.textContent = "Unmark";
   } else {
     markButton.textContent = "Mark";

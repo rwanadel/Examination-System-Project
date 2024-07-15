@@ -1,133 +1,12 @@
-import Question from "./questioncClass.js";
-import Answer from "./answersClass.js";
-import displayQuestion from "./displayQuestionFunction.js";
-import shuffle from "./randoQuestion.js";
-import updateBookmarkedQuestionsUI from "./updateBookmarkedQuestionsUI.js";
+import displayQuestion from "./displayQuestion.js";
+import shuffle from "./shuffleQuestions.js";
+// import updateBookmarkedQuestionsUI from "./updateBookmarkedQuestionsUI.js";
 import updateNavigationButtons from "./updateNavigationButtons.js";
 import updateMarkButton from "./updateMarkButton.js";
 import calcScore from "./calcScore.js";
+import generateQuestions from "./generateQuestions.js";
 
-let q1 = new Question(
-  "What is the correct syntax to print a message in the console in JavaScript?",
-  [
-    new Answer("A- console.print('Hello World!'); "),
-    new Answer("console.log('Hello World!');"),
-    new Answer("print.console('Hello World!'); "),
-    new Answer("log.console('Hello World!'); "),
-  ],
-  1,
-  "console.log('Hello World!');"
-);
-
-let q2 = new Question(
-  "Which company developed JavaScript?",
-  [
-    new Answer("Microsoft "),
-    new Answer("Google "),
-    new Answer("Sun Microsystems "),
-    new Answer("Netscape"),
-  ],
-  2,
-  "Netscape"
-);
-
-let q3 = new Question(
-  "Which of the following is the correct way to create a new array in JavaScript?",
-  [
-    new Answer("var colors = 'red', 'green', 'blue'; "),
-    new Answer("var colors = ['red', 'green', 'blue'];"),
-    new Answer("var colors = (1:'red', 2:'green', 3:'blue'); "),
-    new Answer("var colors = {'red', 'green', 'blue'}; "),
-  ],
-  3,
-  "var colors = ['red', 'green', 'blue'];"
-);
-
-let q4 = new Question(
-  "How can you add a comment in JavaScript?",
-  [
-    new Answer("<!-- This is a comment --> "),
-    new Answer("/* This is a comment */ "),
-    new Answer("// This is a comment"),
-    new Answer("** This is a comment ** "),
-  ],
-  4,
-  "// This is a comment"
-);
-
-let q5 = new Question(
-  "What is the output of typeof NaN in JavaScript?",
-  [
-    new Answer("number"),
-    new Answer("NaN "),
-    new Answer("undefined "),
-    new Answer("string "),
-  ],
-  5,
-  "number"
-);
-
-let q6 = new Question(
-  "Which method is used to round a number to the nearest integer in JavaScript? ",
-  [
-    new Answer("Math.ceil() "),
-    new Answer("Math.round()"),
-    new Answer("Math.floor() "),
-    new Answer("Math.abs() "),
-  ],
-  6,
-  "Math.round()"
-);
-
-let q7 = new Question(
-  "Which of the following is not a JavaScript data type?",
-  [
-    new Answer("Undefined "),
-    new Answer("Number"),
-    new Answer("Boolean"),
-    new Answer("Float"),
-  ],
-  7,
-  "Float"
-);
-
-let q8 = new Question(
-  "What will be the output of Boolean('false') in JavaScript?",
-  [
-    new Answer("true"),
-    new Answer("false "),
-    new Answer("undefined "),
-    new Answer("null "),
-  ],
-  8,
-  "true"
-);
-
-let q9 = new Question(
-  "Which event occurs when the user clicks on an HTML element?",
-  [
-    new Answer("onmouseclick "),
-    new Answer("onclick"),
-    new Answer("onchange "),
-    new Answer("onmouseover "),
-  ],
-  9,
-  "onclick"
-);
-
-let q10 = new Question(
-  "How do you declare a JavaScript variable?",
-  [
-    new Answer("var myVar;"),
-    new Answer("variable myVar; "),
-    new Answer("v myVar; "),
-    new Answer("myVar var;"),
-  ],
-  10,
-  "var myVar;"
-);
-
-let arrQuestion1 = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
+let fixedQuestionsArr = generateQuestions();
 let bookmarkedQuestions = [];
 let selectedAnswers = [];
 
@@ -139,8 +18,7 @@ let submitButton = document.getElementById("submit-btn");
 let answersDiv = document.querySelector(".answers");
 let markedQuestionDiv = document.querySelector(".marked-question-box");
 let answerInputFields = document.getElementsByClassName("answer");
-let questionNumber=document.querySelector(".question-number");
-
+let questionNumber = document.querySelector(".question-number");
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -148,15 +26,12 @@ let score = 0;
 let arrQuestion;
 
 // Check if the shuffled array is already stored in local storage
-if (localStorage.getItem('shuffledQuestions')) {
-  arrQuestion = JSON.parse(localStorage.getItem('shuffledQuestions'));
+if (localStorage.getItem("shuffledQuestions")) {
+  arrQuestion = JSON.parse(localStorage.getItem("shuffledQuestions"));
 } else {
-  arrQuestion = shuffle(arrQuestion1);
-  localStorage.setItem('shuffledQuestions', JSON.stringify(arrQuestion));
+  arrQuestion = shuffle(fixedQuestionsArr);
+  localStorage.setItem("shuffledQuestions", JSON.stringify(arrQuestion));
 }
-
-// Now you can pass shuffledQuestions to other functions
-console.log(arrQuestion);
 
 // display questions and answer
 displayQuestion(
@@ -221,12 +96,15 @@ previosButton.addEventListener("click", function () {
   updateMarkButton(bookmarkedQuestions, currentQuestionIndex, markButton);
 });
 
-markButton.addEventListener("click", function () {
-  const index = bookmarkedQuestions.indexOf(currentQuestionIndex);
-  if (index > -1) {
-    bookmarkedQuestions.splice(index, 1); // Unmark the question if already bookmarked
-  } else {
-    bookmarkedQuestions.push(currentQuestionIndex); // Mark the question if not already bookmarked
+markButton.addEventListener("click", function (e) {
+  const currentIndex = e.target.getAttribute("data-index");
+
+  if (bookmarkedQuestions.indexOf(currentIndex) > -1) {
+    markButton.textContent = "Mark"; // Unmark the question if already bookmarked
+    bookmarkedQuestions.splice(bookmarkedQuestions.indexOf(currentIndex), 1);
+  } else if (bookmarkedQuestions.indexOf(currentIndex)) {
+    markButton.textContent = "Unmark"; // Mark the question if not already bookmarked
+    bookmarkedQuestions.push(currentIndex);
   }
   updateBookmarkedQuestionsUI(
     markedQuestionDiv,
@@ -241,11 +119,63 @@ markButton.addEventListener("click", function () {
     previosButton,
     markButton
   );
-  updateMarkButton(bookmarkedQuestions, currentQuestionIndex, markButton);
 });
 
 submitButton.addEventListener("click", function () {
-//localStorage.clear();
+  let usersArr = JSON.parse(localStorage.getItem("usersData"));
+  localStorage.clear();
+  localStorage.setItem("usersData", JSON.stringify(usersArr));
+
   calcScore(arrQuestion, selectedAnswers, score);
   location.replace("result/result.html");
 });
+
+function updateBookmarkedQuestionsUI(
+  markedQuestionDiv,
+  bookmarkedQuestions,
+  currentQuestionIndex,
+  arrQuestion,
+  title,
+  answersDiv,
+  selectedAnswers,
+  answerInputFields,
+  nextButton,
+  previosButton,
+  markButton
+) {
+  markedQuestionDiv.innerHTML = "";
+  bookmarkedQuestions.forEach((index) => {
+    index = +index;
+    console.log(index);
+    const questionElement = document.createElement("div");
+    questionElement.textContent = `Question: ${arrQuestion[index].number}`;
+    questionElement.classList.add("btn", "marked-button", "w-100", "my-2");
+    questionElement.setAttribute("data-index", index);
+
+    questionElement.addEventListener("click", function (e) {
+      const dataIndex = e.target.getAttribute("data-index");
+      console.log(dataIndex);
+      markButton.setAttribute("data-index", dataIndex);
+      currentQuestionIndex = dataIndex; // Update currentQuestionIndex first
+
+      displayQuestion(
+        currentQuestionIndex,
+        arrQuestion,
+        title,
+        answersDiv,
+        selectedAnswers,
+        answerInputFields,
+        questionNumber
+      );
+      updateNavigationButtons(
+        currentQuestionIndex,
+        arrQuestion,
+        nextButton,
+        previosButton
+      );
+      updateMarkButton(bookmarkedQuestions, currentQuestionIndex, markButton); // Then update the mark button
+    });
+
+    markedQuestionDiv.appendChild(questionElement);
+  });
+}

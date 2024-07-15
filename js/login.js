@@ -6,21 +6,15 @@ document
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
 
-    const storedUserData = JSON.parse(localStorage.getItem("userData"));
+    const userArr = JSON.parse(localStorage.getItem("usersData"));
 
-    if (!storedUserData) {
+    const foundUser = userArr.find((user) => user.email === email);
+
+    if (!foundUser) {
       alert("No registered user found.");
-      return;
-    }
-
-
-    if (email === storedUserData.email && password === storedUserData.password) {
-          window.location.replace("exam.html");
-        //alert("good")
-        
-        // Redirect to the Quiz page
-
+    } else if (foundUser.password !== password) {
+      alert("Invalid password.");
     } else {
-      alert("Invalid email or password.");
+      window.location.replace("exam.html");
     }
   });

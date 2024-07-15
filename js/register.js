@@ -1,3 +1,5 @@
+import User from "./Classes/User.js";
+
 document
   .getElementById("registrationForm")
   .addEventListener("submit", function (event) {
@@ -26,8 +28,20 @@ document
       return;
     }
 
-    const userData = { firstName, lastName, email, password };
-    localStorage.setItem("userData", JSON.stringify(userData));
+    let usersArr = JSON.parse(localStorage.getItem("usersData")) || [];
+
+    // Check if the email is already registered
+    const existingUser = usersArr.find((user) => user.email === email);
+    if (existingUser) {
+      alert("This email is already registered.");
+      return;
+    }
+
+    const user = new User(firstName, lastName, email, password);
+
+    usersArr.push(user);
+
+    localStorage.setItem("usersData", JSON.stringify(usersArr));
 
     location.replace("./login.html");
   });
