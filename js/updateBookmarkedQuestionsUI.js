@@ -1,4 +1,4 @@
-import displayQuestion from "./displayQuestionFunction.js";
+import displayQuestion from "./displayQuestion.js";
 import updateNavigationButtons from "./updateNavigationButtons.js";
 import updateMarkButton from "./updateMarkButton.js";
 

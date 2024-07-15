@@ -1,5 +1,5 @@
-import displayQuestion from "./displayQuestionFunction.js";
-import shuffle from "./randoQuestion.js";
+import displayQuestion from "./displayQuestion.js";
+import shuffle from "./shuffleQuestions.js";
 import updateBookmarkedQuestionsUI from "./updateBookmarkedQuestionsUI.js";
 import updateNavigationButtons from "./updateNavigationButtons.js";
 import updateMarkButton from "./updateMarkButton.js";

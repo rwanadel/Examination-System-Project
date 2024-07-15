@@ -1,5 +1,3 @@
-
-
 function displayQuestion(
   currentQuestionIndex,
   arrQuestion,

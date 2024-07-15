@@ -1,5 +1,5 @@
-import Question from "./questioncClass.js";
-import Answer from "./answersClass.js";
+import Question from "./Classes/Question.js";
+import Answer from "./Classes/Answer.js";
 
 export default function generateQuestions() {
   let q1 = new Question(
