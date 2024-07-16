@@ -5,5 +5,4 @@ export default function calcScore(arrQuestion, selectedAnswers, score) {
     }
   });
   localStorage.setItem("score", score);
-  console.log("score " + score);
 }

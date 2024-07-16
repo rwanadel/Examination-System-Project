@@ -19,8 +19,11 @@ let answersDiv = document.querySelector(".answers");
 let markedQuestionDiv = document.querySelector(".marked-question-box");
 let answerInputFields = document.getElementsByClassName("answer");
 let questionNumber = document.querySelector(".question-number");
-let currentQuestionIndex = 0;
 let score = 0;
+
+let currentQuestionIndex = localStorage.getItem("currentQuestionIndex")
+  ? parseInt(localStorage.getItem("currentQuestionIndex"))
+  : 0;
 
 // Shuffle the questions
 let arrQuestion;
@@ -50,9 +53,13 @@ updateNavigationButtons(
   previosButton
 );
 
-nextButton.addEventListener("click", function () {
+nextButton.addEventListener("click", function (e) {
+  currentQuestionIndex = parseInt(localStorage.getItem("currentQuestionIndex"));
+
   if (currentQuestionIndex < arrQuestion.length - 1) {
     currentQuestionIndex++;
+    localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
+
     displayQuestion(
       currentQuestionIndex,
       arrQuestion,
@@ -71,13 +78,17 @@ nextButton.addEventListener("click", function () {
   );
   updateMarkButton(bookmarkedQuestions, currentQuestionIndex, markButton);
   toggleSubmitButton(currentQuestionIndex, arrQuestion.length);
-  // console.log(answerInputFields);
+  console.log(currentQuestionIndex);
 });
 
 // Event listener for previous button
 previosButton.addEventListener("click", function () {
+  currentQuestionIndex = parseInt(localStorage.getItem("currentQuestionIndex"));
+
   if (currentQuestionIndex > 0) {
     currentQuestionIndex--;
+    localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
+
     displayQuestion(
       currentQuestionIndex,
       arrQuestion,
@@ -95,6 +106,7 @@ previosButton.addEventListener("click", function () {
     previosButton
   );
   updateMarkButton(bookmarkedQuestions, currentQuestionIndex, markButton);
+  console.log(currentQuestionIndex);
 });
 
 markButton.addEventListener("click", function (e) {
@@ -123,7 +135,6 @@ markButton.addEventListener("click", function (e) {
   );
 });
 
-
 function toggleSubmitButton(currentQuestionIndex, totalQuestions) {
   if (currentQuestionIndex === totalQuestions - 1) {
     submitButton.classList.remove("disabled-btn");
@@ -136,71 +147,19 @@ function toggleSubmitButton(currentQuestionIndex, totalQuestions) {
 
 submitButton.addEventListener("click", function (e) {
   let currentQuestionIndex = getCurrentQuestionIndex();
-  let totalQuestions = arrQuestion.length;////////////////
-  if (currentQuestionIndex === totalQuestions - 1){  ///////
-    
-      let usersArr = JSON.parse(localStorage.getItem("usersData"));
+  let totalQuestions = arrQuestion.length;
+  if (currentQuestionIndex === totalQuestions - 1) {
+    let usersArr = JSON.parse(localStorage.getItem("usersData"));
     localStorage.clear();
     localStorage.setItem("usersData", JSON.stringify(usersArr));
-  
+
     calcScore(arrQuestion, selectedAnswers, score);
     location.replace("result/result.html");
-  }else{
+  } else {
     e.preventDefault();
-    }
-
+  }
 });
 
-
-function getCurrentQuestionIndex(){
-  return currentQuestionIndex;
+function getCurrentQuestionIndex() {
+  return parseInt(localStorage.getItem("currentQuestionIndex")) || 0;
 }
-
-// function updateBookmarkedQuestionsUI(
-//   markedQuestionDiv,
-//   bookmarkedQuestions,
-//   currentQuestionIndex,
-//   arrQuestion,
-//   title,
-//   answersDiv,
-//   selectedAnswers,
-//   answerInputFields,
-//   nextButton,
-//   previosButton,
-//   markButton
-// ) {
-//   markedQuestionDiv.innerHTML = "";
-//   bookmarkedQuestions.forEach((index) => {
-//     index = +index;
-//     console.log(index);
-//     const questionElement = document.createElement("div");
-//     questionElement.textContent = `Question: ${arrQuestion[index].number}`;
-//     questionElement.classList.add("btn", "marked-button", "w-100", "my-2");
-//     questionElement.setAttribute("data-index", index);
-
-//     questionElement.addEventListener("click", function (e) {
-//       const dataIndex = e.target.getAttribute("data-index");
-//       console.log(dataIndex);
-//       markButton.setAttribute("data-index", dataIndex);
-//       currentQuestionIndex = dataIndex; // Update currentQuestionIndex first
-
-//       displayQuestion(
-//         currentQuestionIndex,
-//         arrQuestion,
-//         title,
-//         answersDiv,
-//         selectedAnswers,
-//         answerInputFields
-//       );
-//       updateNavigationButtons(
-//         currentQuestionIndex,
-//         arrQuestion,
-//         nextButton,
-//         previosButton
-//       );
-//       updateMarkButton(bookmarkedQuestions, currentQuestionIndex, markButton); // Then update the mark button
-//     });
-
-//     markedQuestionDiv.appendChild(questionElement);
-//   });
-// }
