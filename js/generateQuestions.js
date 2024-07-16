@@ -5,7 +5,7 @@ export default function generateQuestions() {
   let q1 = new Question(
     "What is the correct syntax to print a message in the console in JavaScript?",
     [
-      new Answer("A- console.print('Hello World!'); "),
+      new Answer("console.print('Hello World!'); "),
       new Answer("console.log('Hello World!');"),
       new Answer("print.console('Hello World!'); "),
       new Answer("log.console('Hello World!'); "),
