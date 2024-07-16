@@ -11,7 +11,7 @@
    background-color:white ;
    border-radius: 10px;
    border: 1px solid gray;
-   /* height: 500px; */
+
    
 }
 .marked-question{
@@ -49,7 +49,7 @@
     
 }
 .btns{
-    /* background-color: blueviolet; */
+
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
@@ -97,7 +97,7 @@
     font-size: 20px;
     border: none;
 }
-/* class="btn text-light fs-4 w-100 " */
+
 
 @media screen and (max-width:770px) {
     .continerOfRadioAndLabel{
@@ -105,6 +105,14 @@
        
         width: 113%;
 
+    }
+    
+   
+    #mark-btn{
+        width: 80px;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        
     }
 
 }
