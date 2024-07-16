@@ -11,10 +11,11 @@ function displayQuestion(
   // if (currentQuestionIndex < arrQuestion.length && currentQuestionIndex >= 0) {
   // Wrap the question title in a Bootstrap-styled element
   questionNumber.textContent = `Question: ${arrQuestion[currentQuestionIndex].number}`;
-  console.log(arrQuestion[currentQuestionIndex].title);
   title.innerHTML = `<div class="mb-3"><h4">${arrQuestion[currentQuestionIndex].title}</h4></div>`;
 
   answersDiv.innerHTML = ""; // Clear previous answers
+
+  localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
 
   // Generate and append radio buttons and labels for each answer
   markButton.setAttribute("data-index", currentQuestionIndex);

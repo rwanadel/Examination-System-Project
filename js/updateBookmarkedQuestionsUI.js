@@ -30,7 +30,9 @@ function updateBookmarkedQuestionsUI(
       const dataIndex = e.target.getAttribute("data-index");
       console.log(dataIndex);
       markButton.setAttribute("data-index", dataIndex);
-      currentQuestionIndex = dataIndex; // Update currentQuestionIndex first
+      currentQuestionIndex = +dataIndex; // Update currentQuestionIndex
+      console.log(currentQuestionIndex);
+      localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
 
       displayQuestion(
         currentQuestionIndex,
@@ -47,7 +49,7 @@ function updateBookmarkedQuestionsUI(
         nextButton,
         previosButton
       );
-      updateMarkButton(bookmarkedQuestions, currentQuestionIndex, markButton); // Then update the mark button
+      updateMarkButton(bookmarkedQuestions, currentQuestionIndex, markButton);
     });
 
     markedQuestionDiv.appendChild(questionElement);

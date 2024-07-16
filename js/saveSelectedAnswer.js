@@ -7,7 +7,5 @@ function saveSelectedAnswer(questionNumber, selectedAnswers) {
   if (selectedRadio) {
     selectedAnswers[questionNumber] = selectedRadio.value;
   }
-  console.log(selectedRadio.value);
-  console.log(selectedAnswers);
 }
 export default saveSelectedAnswer;

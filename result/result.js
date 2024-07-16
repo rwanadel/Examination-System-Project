@@ -8,8 +8,7 @@ let scorePercentage = ((score / 10) * 100).toFixed(1);
 function handleExamSuccess(score, scorePercentage) {
   document
     .getElementById("resultImage")
-    .setAttribute("src", "../assets/freepik-export-20240715163542Z9ZD.jpeg");
-
+    .setAttribute("src", "../assets/icons/Success factors-bro.svg");
 
   document.getElementById("resultMessege").textContent =
     "Nice job, you passed!";
@@ -22,7 +21,7 @@ function handleExamSuccess(score, scorePercentage) {
 function handleExamFail(score, scorePercentage) {
   document
     .getElementById("resultImage")
-    .setAttribute("src", "../assets/icons/x-circle-fill.png");
+    .setAttribute("src", "../assets/icons/Business failure-pana.svg");
 
   document.getElementById("resultMessege").textContent =
     "Sorry, you didn't pass";
