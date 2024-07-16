@@ -1,4 +1,4 @@
-document
+  document
   .getElementById("loginForm")
   .addEventListener("submit", function (event) {
     event.preventDefault();
@@ -10,10 +10,26 @@ document
 
     const foundUser = userArr.find((user) => user.email === email);
 
+    const validEmail=document.querySelector(".validEmail");
+    const validpass=document.querySelector(".validpass");
+
+    validEmail.innerHTML = "";
+    validpass.innerHTML = "";
+
     if (!foundUser) {
-      alert("No registered user found.");
+      
+      validEmail.innerHTML="No registered user found.";
+      validEmail.style.color="red";
+      validEmail.style.fontSize="14px";
+
+
     } else if (foundUser.password !== password) {
-      alert("Invalid password.");
+      
+      validpass.innerHTML="Invalid password.";
+      validpass.style.color="red";
+      validpass.style.fontSize="14px";
+
+
     } else {
       window.location.replace("exam.html");
     }

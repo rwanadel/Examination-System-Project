@@ -10,31 +10,30 @@
   <body>
     <div class="container my-5 text-center">
       <h1  class="title-result">Quiz Result</h1>
-      <div>
-        <img id="resultImage" src="" /><!-- result image-->
+      <div class="w-50 box-img  ">
+        <img id="resultImage" class="w-50 " src="" /><!-- result image-->
       </div>
-      <p id="resultMessege" class="fs-4"></p><!-- result msg-->
+      <p id="resultMessege" class="fs-3 "></p><!-- result msg-->
 
-      <div class="row gx-5">
-        <div class="col">
-          <div class="bg-secondary-subtle py-2">
-            <p class="fs-5 fw-bold">YOUR SCORE</p>   <!-------------->
+      <div class="row justify-content-center"> <!------//////////main-->
+        <div class=" col-8 result-box"><!--/////////1-->
+          <div class="py-2">
+            <p class="fs-2 fw-bold py-2 title-result">YOUR SCORE</p>   <!-------------->
             <span id="percentageSpan" class="fs-1"></span> <!-- percentag score-->
             <hr class="mx-3" />
-            <p>
+            <p class="fs-4">
               PASSING SCORE :
               <span>70%</span>
             </p>
           </div>
-        </div>
-        <div class="col">
-          <div class="bg-secondary-subtle py-2">
-            <p class="fs-5 fw-bold">YOUR POINTS</p> <!--------------->
+          <div class="py-2">
+            <p class="fs-2 fw-bold py-2 title-result">YOUR POINTS</p> <!--------------->
             <span id="pointsSpan" class="fs-1"></span><!-- points score-->
             <hr class="mx-3" />
-            <p>PASSING POINTS : <span>7</span></p>
+            <p class="fs-4">PASSING POINTS : <span>7</span></p>
           </div>
         </div>
+       
       </div>
     </div>
     <script src="/js/bootstrap.bundle.min.js"></script>

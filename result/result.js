@@ -8,7 +8,8 @@ let scorePercentage = ((score / 10) * 100).toFixed(1);
 function handleExamSuccess(score, scorePercentage) {
   document
     .getElementById("resultImage")
-    .setAttribute("src", "../assets/icons/check-circle.png");
+    .setAttribute("src", "../assets/freepik-export-20240715163542Z9ZD.jpeg");
+
 
   document.getElementById("resultMessege").textContent =
     "Nice job, you passed!";

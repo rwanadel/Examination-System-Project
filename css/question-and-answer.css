@@ -38,8 +38,7 @@
 }
 .continerOfRadioAndLabel{
    
-    max-width: 70%;
-    min-width: 30%;
+    width:70% ;
     border: 1px solid gray ;
     border-radius: 10px;
     background-color: var(--bluercolor);
@@ -68,15 +67,20 @@
 
 
 }
-#submit-btn{
-    background-color: var(--primary-color);
-    margin: 20px 0;
+.submit-button{
+    background-color: var(--primary-color) ;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    border: none;
     
 
     
 
 }
-#submit-btn:hover{
+.submit-button:hover{
     background-color:var(--hovercolor) ;
     
 }
@@ -84,6 +88,25 @@
     border:1px solid var(--primary-color) !important ;
     
 }
+.disabled-btn{
+    background-color: gray;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    border: none;
+}
+/* class="btn text-light fs-4 w-100 " */
 
+@media screen and (max-width:770px) {
+    .continerOfRadioAndLabel{
+        margin:10px 0;
+       
+        width: 113%;
+
+    }
+
+}
 
 

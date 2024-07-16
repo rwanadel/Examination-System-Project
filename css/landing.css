@@ -83,3 +83,22 @@ margin-top: 80px;
     
     margin: 130px 100px;
 }
+@media screen and (max-width:1310px){
+    .onlanding{
+        display: none;
+    }
+    .block2{
+        width: 100%;
+
+    }
+    .vector-img{
+        margin: 80px 20px;
+       
+    }
+    .btns{
+        margin:10px 30px;
+        display: flex;
+        justify-content: center;
+    }
+    
+}

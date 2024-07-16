@@ -70,6 +70,7 @@ nextButton.addEventListener("click", function () {
     previosButton
   );
   updateMarkButton(bookmarkedQuestions, currentQuestionIndex, markButton);
+  toggleSubmitButton(currentQuestionIndex, arrQuestion.length);
   // console.log(answerInputFields);
 });
 
@@ -122,14 +123,38 @@ markButton.addEventListener("click", function (e) {
   );
 });
 
-submitButton.addEventListener("click", function () {
-  let usersArr = JSON.parse(localStorage.getItem("usersData"));
-  localStorage.clear();
-  localStorage.setItem("usersData", JSON.stringify(usersArr));
 
-  calcScore(arrQuestion, selectedAnswers, score);
-  location.replace("result/result.html");
+function toggleSubmitButton(currentQuestionIndex, totalQuestions) {
+  if (currentQuestionIndex === totalQuestions - 1) {
+    submitButton.classList.remove("disabled-btn");
+    submitButton.classList.add("submit-button");
+  } else {
+    submitButton.classList.remove("submit-button");
+    submitButton.classList.add("disabled-btn");
+  }
+}
+
+submitButton.addEventListener("click", function (e) {
+  let currentQuestionIndex = getCurrentQuestionIndex();
+  let totalQuestions = arrQuestion.length;////////////////
+  if (currentQuestionIndex === totalQuestions - 1){  ///////
+    
+      let usersArr = JSON.parse(localStorage.getItem("usersData"));
+    localStorage.clear();
+    localStorage.setItem("usersData", JSON.stringify(usersArr));
+  
+    calcScore(arrQuestion, selectedAnswers, score);
+    location.replace("result/result.html");
+  }else{
+    e.preventDefault();
+    }
+
 });
+
+
+function getCurrentQuestionIndex(){
+  return currentQuestionIndex;
+}
 
 // function updateBookmarkedQuestionsUI(
 //   markedQuestionDiv,

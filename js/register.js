@@ -10,21 +10,45 @@ document
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
+    const errorOfNameF=document.querySelector(".errorOfNameF");
+    const errorOfNameL=document.querySelector(".errorOfNameL");
+    const errorOfemail=document.querySelector(".errorOfemail");
+    const errorOfpass=document.querySelector(".errorOfpass");
+    const errorOfconpass=document.querySelector(".errorOfconpass");
+    errorOfNameF.innerHTML = "";
+    errorOfNameL.innerHTML = "";
+    errorOfemail.innerHTML = "";
+    errorOfpass.innerHTML = "";
+    errorOfconpass.innerHTML = "";
 
-    if (!/^[a-zA-Z]+$/.test(firstName) || !/^[a-zA-Z]+$/.test(lastName)) {
-      alert(
-        "Please Note that first name and last name should be Only charachters."
-      );
+    if (!/^[a-zA-Z]+$/.test(firstName) ) {
+    
+      errorOfNameF.innerHTML="Please Note that first name should be Only charachters.";
+      errorOfNameF.style.color="red";
+      errorOfNameF.style.fontSize="14px";
       return;
+    }
+    if(!/^[a-zA-Z]+$/.test(lastName)){
+      errorOfNameL.innerHTML="Please Note that last name should be Only charachters.";
+      errorOfNameL.style.color="red";
+      errorOfNameL.style.fontSize="14px";
+      return;
+
     }
 
     if (password.length < 8) {
-      alert("Password must be at least 8 characters long.");
+      
+      errorOfpass.innerHTML="Password must be at least 8 characters long.";
+      errorOfpass.style.color="red";
+      errorOfpass.style.fontSize="14px";
       return;
     }
 
     if (password !== confirmPassword) {
-      alert("Passwords do not match.");
+      
+      errorOfconpass.innerHTML="Passwords do not match.";
+      errorOfconpass.style.color="red";
+      errorOfconpass.style.fontSize="14px";
       return;
     }
 
@@ -33,7 +57,10 @@ document
     // Check if the email is already registered
     const existingUser = usersArr.find((user) => user.email === email);
     if (existingUser) {
-      alert("This email is already registered.");
+    
+      errorOfemail.innerHTML="This email is already registered.";
+      errorOfemail.style.color="red";
+      errorOfemail.style.fontSize="14px";
       return;
     }
 
