@@ -7,3 +7,11 @@
 .title-result{
     color: var(--primary-color);
 }
+.result-box{
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+}
+.box-img {
+
+margin: auto;
+}
