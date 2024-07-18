@@ -8,7 +8,7 @@ import generateQuestions from "./generateQuestions.js";
 
 let fixedQuestionsArr = generateQuestions();
 let bookmarkedQuestions = [];
-let selectedAnswers = [];
+export let selectedAnswers = [];
 
 let title = document.querySelector(".questionTitle");
 let nextButton = document.getElementById("next-btn");
@@ -19,14 +19,14 @@ let answersDiv = document.querySelector(".answers");
 let markedQuestionDiv = document.querySelector(".marked-question-box");
 let answerInputFields = document.getElementsByClassName("answer");
 let questionNumber = document.querySelector(".question-number");
-let score = 0;
+export let score = 0;
 
 let currentQuestionIndex = localStorage.getItem("currentQuestionIndex")
   ? parseInt(localStorage.getItem("currentQuestionIndex"))
   : 0;
 
 // Shuffle the questions
-let arrQuestion;
+export let arrQuestion;
 
 // Check if the shuffled array is already stored in local storage
 if (localStorage.getItem("shuffledQuestions")) {

@@ -1,5 +1,7 @@
+import calcScore from "./calcScore.js";
+import { arrQuestion, selectedAnswers, score } from "./main.js";
 document.addEventListener("DOMContentLoaded", function () {
-  const examDuration = 1200; // 5 minutes
+  const examDuration = 25; // 5 minutes
 
   const timerBar = document.getElementById("timer-bar");
 
@@ -22,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Check if the time is up
     if (remainingTime <= 0) {
       clearInterval(timerInterval);
+      calcScore(arrQuestion, selectedAnswers, score);
       location.replace("result/result.html");
     }
   }
